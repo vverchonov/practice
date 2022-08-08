@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CreateRoom from "./CreateRoom";
 import RoomJoin from "./RoomJoin";
+import Room from './Room'
 
 export default class Home extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ export default class Home extends Component {
                     <Route path='/' />
                     <Route path='/join' element={<RoomJoin />} />
                     <Route path='/create' element={<CreateRoom />} />
+                    <Route path='/room/:roomCode' element={<Room />} />
                 </Routes>
             </BrowserRouter>
         );
