@@ -1,6 +1,7 @@
+import { Menu } from '@mui/material';
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import Home from './Home'
+import MyMenu from './MyMenu'
 
 
 
@@ -12,7 +13,7 @@ export default class App extends Component {
     render() {
         return (
             <div id="center">
-                <Home />
+                <MyMenu />
             </div>
         );
     }

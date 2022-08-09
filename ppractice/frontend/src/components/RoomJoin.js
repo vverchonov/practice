@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { TextField, Button, Grid, Typography, Link } from '@mui/material'
+import { TextField, Button, Grid, Typography, ButtonGroup } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 
 function RoomJoin() {
@@ -12,6 +12,10 @@ function RoomJoin() {
 
     const handleCodeChange = (e) => {
         setCode(e.target.value);
+    }
+
+    const backButton = () => {
+        navigate('/');
     }
 
     const roomEnterButton = () => {
@@ -45,13 +49,11 @@ function RoomJoin() {
                     <TextField error={error} label="Code" placeholder="Enter a room code" value={roomCode} helperText={error} onChange={handleCodeChange} variant="outlined" />
                 </Grid>
                 <Grid item xs={12} align="center">
-                    <Button color="primary" variant="contained" onClick={roomEnterButton} >Join</Button>
+                    <ButtonGroup disableElevation variant="contained" color="primary">
+                        <Button color="primary" variant="contained" onClick={roomEnterButton} >Join</Button>
+                        <Button color="secondary" variant="contained" onClick={backButton}>Go Back</Button>
+                    </ButtonGroup>
                 </Grid>
-                <Grid item xs={12} align="center">
-                    <Button color="secondary" variant="contained" to="/" component={Link}>Go Back</Button>
-
-                </Grid>
-
             </Grid>
         </div >)
 }

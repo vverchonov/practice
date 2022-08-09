@@ -87,7 +87,7 @@ function CreateRoom() {
                 </Grid>
                 <Grid item xs={12} align="center">
                     <Button color="secondary" variant="contained" onClick={handleCreateRoom}>Create a room</Button>
-                    <Button color="primary" variant="contained" to="/" component={Link}>Back</Button>
+                    <Button color="primary" variant="contained" onClick={() => navigate('/')}>Back</Button>
                 </Grid>
             </Grid>
         </div>
