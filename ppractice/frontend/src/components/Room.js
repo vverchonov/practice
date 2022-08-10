@@ -2,6 +2,9 @@ import React, { Component, useEffect, useState } from "react";
 
 import { Grid, Typography, Button, Modal, Box } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
+import CreateRoom from "./CreateRoom";
+import { ButtonGroup } from "@mui/material";
+
 
 const style = {
     position: 'absolute',
@@ -57,8 +60,22 @@ function Room() {
 
     useEffect(() => {
         getRoomDetails()
-        console.log("host =", isHost)
     })
+
+    const ModalRender = () => {
+        return (
+            <Modal
+                open={open}
+                onClose={handleModal}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <CreateRoom code={roomCode} votes={votes_to_skip} guest={guest_can_pause} update={true} func />
+                </Box>
+            </Modal>
+        );
+    }
 
     return (
         <div>
@@ -71,34 +88,21 @@ function Room() {
                 </Grid>
                 <Grid item xs={12} align="center">
                     <Typography variant="h6" component="h6">Are you admin?: {isHost.toString()}</Typography>
-
                 </Grid>
                 <Grid item xs={12} align="center">
                     <Typography variant="h6" component="h6">Votes to skip: {votes_to_skip}</Typography>
                 </Grid>
-                {isHost ?
-                    <Grid item xs={12} align="center">
-                        <Button color="primary" variant="contained" onClick={handleModal}>Settings</Button>
-                    </Grid> : null
-                }
                 <Grid item xs={12} align="center">
-                    <Button color="secondary" variant="contained" onClick={leaveRoom}>Leave Room</Button>
+                    <ButtonGroup disableElevation variant="contained" color="primary">
+                        {isHost ?
+
+                            <Button color="error" style={{ border: "1px solid red" }} variant="outlined" onClick={handleModal}>Settings</Button>
+                            : null
+                        }
+                        <Button color="error" variant="contained" onClick={leaveRoom}>Leave Room</Button>
+                    </ButtonGroup>
                 </Grid>
-                <Modal
-                    open={open}
-                    onClose={handleModal}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box sx={style}>
-                        <Typography id="modal-modal-title" variant="h3" component="h2">
-                            Change Room Settings
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                        </Typography>
-                    </Box>
-                </Modal>
+                <ModalRender />
             </Grid>
         </div>
     );

@@ -31,8 +31,8 @@ function MyHome() {
                 </Grid>
                 <Grid item xs={12} align="center">
                     <ButtonGroup disableElevation variant="contained" color="primary">
-                        <Button color="primary" onClick={() => moveNextScreen('join')}>Join Room</Button>
-                        <Button color="secondary" onClick={() => moveNextScreen('create')}>Create Room</Button>
+                        <Button color="error" style={{ border: "1px solid red" }} variant="outlined" onClick={() => moveNextScreen('join')}>Join Room</Button>
+                        <Button color="error" onClick={() => moveNextScreen('create')}>Create Room</Button>
                     </ButtonGroup>
                 </Grid>
             </Grid>

@@ -42,16 +42,16 @@ function RoomJoin() {
     return (
         <div>
             <Grid container spacing={1} alignItems="center">
-                <Grid item xs={12}>
-                    <Typography variant="h4" component="h4">Join a room</Typography>
+                <Grid item xs={12} align="center">
+                    <Typography variant="h3" component="h4">Join a room</Typography>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} align="center">
                     <TextField error={error} label="Code" placeholder="Enter a room code" value={roomCode} helperText={error} onChange={handleCodeChange} variant="outlined" />
                 </Grid>
                 <Grid item xs={12} align="center">
                     <ButtonGroup disableElevation variant="contained" color="primary">
-                        <Button color="primary" variant="contained" onClick={roomEnterButton} >Join</Button>
-                        <Button color="secondary" variant="contained" onClick={backButton}>Go Back</Button>
+                        <Button color="error" style={{ border: "1px solid red" }} variant="outlined" onClick={roomEnterButton} >Join</Button>
+                        <Button color="error" variant="contained" onClick={backButton}>Go Back</Button>
                     </ButtonGroup>
                 </Grid>
             </Grid>
