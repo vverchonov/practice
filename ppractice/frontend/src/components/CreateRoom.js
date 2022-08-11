@@ -91,6 +91,11 @@ const CreateRoom = (props) => {
     return (
         <div>
             <Grid container spacing={1}>
+                <Grid item xs={12} align="center">
+                    <Collapse in={statusMy != ""}>
+                        <Alert >{statusMy}</Alert>
+                    </Collapse>
+                </Grid >
                 {!isUpdate ?
                     <Grid item xs={12} align="center">
                         <Typography component="h3" variant="h4">Create a Room</Typography>
@@ -100,11 +105,7 @@ const CreateRoom = (props) => {
                         <Typography component="h4" variant="h3">Update {roomCode} Room</Typography>
                     </Grid >
                 }
-                <Grid item xs={12} align="center">
-                    <Collapse in={statusMy != ""}>
-                        <Alert >{statusMy}</Alert>
-                    </Collapse>
-                </Grid >
+
                 <Grid item xs={12} align="center">
                     <FormControl component="fieldset">
                         <FormHelperText>
@@ -138,6 +139,7 @@ const CreateRoom = (props) => {
                         <Button color="error" variant="contained" onClick={updateRoom}>Update Room</Button>
                     </Grid>
                 }
+
             </Grid>
         </div>
     );

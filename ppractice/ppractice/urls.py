@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('django/', include('myDjangoApp.urls')),
     path('', include('frontend.urls')),
+    path('spotify/', include('spotify_connect.urls'))
 ]

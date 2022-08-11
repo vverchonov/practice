@@ -24,6 +24,7 @@ function Room() {
     const [guest_can_pause, setPause] = useState(false);
     const [isHost, setIsHost] = useState(false);
     const [open, setOpen] = useState(false);
+    const [isSpotify, setSpotify] = useState(false);
 
     const navigation = useNavigate();
 
@@ -36,6 +37,7 @@ function Room() {
                 setVotes(data.votes_to_skip);
                 setPause(data.guest_can_pause);
                 setIsHost(data.is_host);
+                authenticateSpotify()
             })
     }
 
@@ -60,7 +62,24 @@ function Room() {
 
     useEffect(() => {
         getRoomDetails()
+
     })
+
+    const authenticateSpotify = () => {
+        fetch('/spotify/is-auth')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (!data.msg) {
+                    fetch('/spotify/auth-url')
+                        .then(response => response.json())
+                        .then(data => {
+                            window.location.replace(data.url)
+                        })
+                }
+            })
+
+    }
 
     const ModalRender = () => {
         return (
